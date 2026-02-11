@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --bg: #fff0f3;
+        }
+ 
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--bg);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+ 
+        /* Tarjeta Principal */
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            z-index: 1;
+        }
+ 
+        .heart {
+            font-size: 4rem;
+            animation: beat 1s infinite;
+            display: inline-block;
+        }
+ 
+        h1 { color: #594a4e; margin: 1rem 0; }
+ 
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+ 
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+ 
+        .btn-yes { background: var(--primary); color: white; }
+        .btn-yes:hover { transform: scale(1.1); background: #ef233c; }
+ 
+        .btn-no { background: #ced4da; color: #495057; position: relative; }
+ 
+        /* Ventana Emergente (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+ 
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+ 
+        .gif-container img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+ 
+        /* Texto Editable */
+        .editable-text {
+            border: 2px dashed var(--secondary);
+            padding: 10px;
+            border-radius: 10px;
+            color: #ff4d6d;
+            font-size: 1.2rem;
+            outline: none;
+            min-height: 40px;
+        }
+ 
+        .editable-text:focus { border-style: solid; background: #fff8f9; }
+ 
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+ 
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>¿Quieres ser mi San Valentín?</h1>
+        <div class="btn-container">
+            <button class="btn-yes" onclick="openModal()">¡SÍ!</button>
+            <button id="btnNo" class="btn-no" onmouseover="mueveBoton()">No</button>
+        </div>
+    </div>
+ 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpndW1uMmd4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26FLdmIp6wJr91JAI/giphy.gif" alt="Cute Panda">
+            </div>
+            <div class="editable-text" contenteditable="true">
+                Te amo mi preciosa niña chula!, eres el sol de mi vida y la que le da color y vida a mis dias.❤️
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "flex";
+        }
+ 
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+ 
+        function mueveBoton() {
+            const btn = document.getElementById("btnNo");
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = "absolute";
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
+ 
